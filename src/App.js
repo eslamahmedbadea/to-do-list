@@ -11,7 +11,6 @@ function App() {
   // Get the input value after press button
   const handleAddTodo = () => {
     const text = inputRef.current.value;
-    console.log(text);
   };
 
   return (
