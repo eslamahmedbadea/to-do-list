@@ -11,6 +11,10 @@ function App() {
   // Get the input value after press button
   const handleAddTodo = () => {
     const text = inputRef.current.value;
+    setToDos([...toDos, text]);
+
+    // Delete the input value after add it
+    inputRef.current.value = "";
   };
 
   return (
