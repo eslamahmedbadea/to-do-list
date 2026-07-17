@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRef } from "react";
+import "./App.css";
 
 function App() {
   // State
@@ -19,19 +20,18 @@ function App() {
 
   return (
     <div className="App">
-      {/* Title */}
-      <h2>To Do List</h2>
-
       {/* Todo List */}
-      <ul>
-        {toDos.map((item) => (
-          <li>{item}</li>
-        ))}
-      </ul>
-
-      {/* Input & Button */}
-      <input ref={inputRef} placeholder="Enter Your Task.." />
-      <button onClick={handleAddTodo}>Add</button>
+      <div className="to-do-container">
+        <h2>To Do List</h2>
+        <ul>
+          {toDos.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        {/* Input & Button */}
+        <input ref={inputRef} placeholder="Enter Your Task.." />
+        <button onClick={handleAddTodo}>Add</button>
+      </div>
     </div>
   );
 }
