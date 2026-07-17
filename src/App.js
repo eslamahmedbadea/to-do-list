@@ -1,66 +1,64 @@
-import { useState } from "react";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import "./App.css";
 
 function App() {
   // State
   const [toDos, setToDos] = useState([]);
 
-  // Ref
+  // Refs
   const inputRef = useRef();
 
-  // Get the input value after press button
+  // Add Todo
   const handleAddTodo = () => {
     const text = inputRef.current.value;
 
     if (!text.trim()) return;
 
     const newItem = {
-      completed: false,
       text,
+      completed: false,
     };
 
     setToDos([...toDos, newItem]);
 
-    // Delete the input value after add it
+    // Clear input after adding
     inputRef.current.value = "";
   };
 
-  // Toggle completed
+  // Complete Todo
   const handleItemDone = (index) => {
     const newTodos = [...toDos];
     newTodos[index].completed = !newTodos[index].completed;
+
     setToDos(newTodos);
   };
 
-  // Toggle deleted
+  // Remove Todo
   const handleDeleteItem = (index) => {
     const newTodos = [...toDos];
     newTodos.splice(index, 1);
+
     setToDos(newTodos);
   };
 
   return (
     <div className="App">
-      {/* Todo List */}
       <div className="to-do-container">
         <h2>To Do List</h2>
 
         <ul>
-          {toDos.map((item, index) => {
-            return (
-              <div className="tasks-on-list">
-                <li
-                  key={index}
-                  className={item.completed ? "done" : ""}
-                  onClick={() => handleItemDone(index)}
-                >
-                  {item.text}
-                </li>
-                <span onClick={() => handleDeleteItem(index)}>❌</span>
-              </div>
-            );
-          })}
+          {toDos.map((item, index) => (
+            <div className="tasks-on-list" key={index}>
+              <li
+                className={item.completed ? "done" : ""}
+                onClick={() => handleItemDone(index)}
+              >
+                {item.text}
+              </li>
+
+              <span onClick={() => handleDeleteItem(index)}>❌</span>
+            </div>
+          ))}
         </ul>
 
         {/* Input & Button */}
