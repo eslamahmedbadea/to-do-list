@@ -23,3 +23,10 @@
 .done {
   text-decoration: line-through;
 }
+
+.tasks-on-list {
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
+  align-items: center;
+}

@@ -33,6 +33,13 @@ function App() {
     setToDos(newTodos);
   };
 
+  // Toogle deleted
+  const handleDeleteItem = (index) => {
+    const newTodos = [...toDos];
+    newTodos.splice(index, 1);
+    setToDos(newTodos);
+  };
+
   return (
     <div className="App">
       {/* Todo List */}
@@ -42,13 +49,16 @@ function App() {
         <ul>
           {toDos.map((item, index) => {
             return (
-              <li
-                key={index}
-                className={item.completed ? "done" : ""}
-                onClick={() => handleItemDone(index)}
-              >
-                {item.text}
-              </li>
+              <div className="tasks-on-list">
+                <li
+                  key={index}
+                  className={item.completed ? "done" : ""}
+                  onClick={() => handleItemDone(index)}
+                >
+                  {item.text}
+                </li>
+                <span onClick={() => handleDeleteItem(index)}>❌</span>
+              </div>
             );
           })}
         </ul>
