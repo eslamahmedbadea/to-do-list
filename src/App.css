@@ -19,3 +19,7 @@
   list-style-type: "✍️";
   cursor: pointer;
 }
+
+.done {
+  text-decoration: line-through;
+}
