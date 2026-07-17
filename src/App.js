@@ -33,7 +33,7 @@ function App() {
     setToDos(newTodos);
   };
 
-  // Toogle deleted
+  // Toggle deleted
   const handleDeleteItem = (index) => {
     const newTodos = [...toDos];
     newTodos.splice(index, 1);
